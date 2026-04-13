@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.logout {
+    color: red;
+    font-weight: bold;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.card {
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 2px 5px gray;
+    text-align: center;
+    font-size: 18px;
+
+    text-decoration: none;   /* removes underline */
+    color: black;            /* normal text color */
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+/* Hover effect 🔥 */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Colors */
+.total { border-left: 6px  solid #4a90e2; }
+.solved { border-left: 6px solid #27ae60; }
+.unsolved { border-left: 6px solid #e74c3c;}
+
+.progress-bar {
+    width:60%x;
+    margin: 20px auto;   /* THIS centers it */
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.login-box {
+    background: white;
+    padding: 40px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Title */
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hover */
+.login-box button:hover {
+    background: #357abd;
+}

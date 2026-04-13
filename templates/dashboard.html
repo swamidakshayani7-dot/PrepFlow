@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+    font-family: Arial;
+    background-color:white;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px auto;
+    padding: 15px;
+    width: 650px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 18px;
+}
+</style>
+<head>
+    <title>Dashboard</title>
+    <link rel="manifest" href="{{ url_for('static',filename='manifest.json')}}">
+    <meta name="theme-color" content="#4a90e2">
+</head>
+
+<body>
+<div class="navbar">
+    <h2>PrepFlow📊</h2>
+    <a href="/" class="logout">Logout</a>
+</div>
+<div class="container">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<h2>Welcome to Dashboard 🎉</h2>
+<br><br>
+
+
+<h3>Add problems</h3><br>
+<form method="POST" action="/add_problem">
+    <input type="text" name="problem_name" placeholder="Enter problem name" required
+        style="padding:7px; width=200px;">
+    <button type="submit" style="padding:7px;">Add</button>
+</form>
+<br><br>
+<hr><br><br>
+<form method="GET" action="/dashboard" style="text-align:center; margin-bottom:20px;">
+    <input type="text" name="search" placeholder="Search problem...."
+          style="padding:8px; width:200px;">
+    <button type="submit">🔍</button>
+</form>
+<br><br>
+<div class="cards">
+
+    <a href="/dashboard" class="card total">Total: {{ total }}</a>
+
+    <a href="/dashboard?filter=solved"class="card solved">Solved: {{ solved }}</a>
+
+    <a href="/dashboard?filter=unsolved" class="card unsolved">
+        Unsolved: {{ total - solved }}
+    </a>
+</div>
+<br><br>
+<h2 style="text-align:center;">Progress:{{solved}}/{{total}}</h2><br><br>
+<div class="progress-bar">
+<div style="width:250x; background-color: #ddd; border-radius: 10px;">
+    <div style="
+        width: {{ (solved / total * 100) if total > 0 else 0 }}%;
+        
+        background-color: 
+        {% if solved == total %}
+             green
+        {% elif solved > 0 %}
+            orange
+        {% else %}
+            red
+        {% endif %};
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        text-align: center;">
+        
+        {{ (solved / total * 100) | round(0) if total > 0 else 0 }}%
+    
+    </div>
+</div>
+</div>
+<br><br>
+<h3>your problems</h3><br>
+<ul>
+     {% for problem in problems %}
+        <li>
+          <div style="display:flex;align-items:center;width:100%;"> 
+            <span style="width:400px;">
+                {{ problem[1] }}
+            </span> 
+            <span style="width:160px;">
+                {% if problem[2] == 'Solved' %}
+                    <span style="color: green;">●</span> Solved
+                {% else %}
+                   <span style="color: red;">●</span> Not Solved
+                {% endif %}
+            </span>
+          
+            <div>
+               <a href="/mark_solved/{{problem[0]}}">✅</a>
+               <a href="/delete/{{problem[0]}}">❌</a>
+            </div>
+          </div>
+        </li>
+     {% endfor %}
+        
+    
+     
+
+</ul>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/sw.js')
+    .then(() => console.log("Service Worker Registered"));
+}
+</script>
+
+
+
+</body>
+</html>

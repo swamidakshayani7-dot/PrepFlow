@@ -1,0 +1,41 @@
+ 
+ {% comment %} <p>You are logged in successfully.</p> {% endcomment %}
+
+ <div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 2px 5px gray;
+">
+    <!-- Left side -->
+    <span>Dashboard</span>
+
+    <!-- Right side -->
+    <a href="/" style="font-weight: bold;">Logout</a>
+
+    
+</div> 
+
+----------- LOGIN ------------
+
+<h2>Placement Preparation Tracker</h2>
+<form method="POST" action="/">
+    <label>Username</label><br>
+    <input type="text" name="username" required><br><br>
+    <label>password</label><br>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">Login</button>
+</form> 
+
+------------- REGISTER --------
+
+<form method="POST" action="/register">
+    <label>Username</label><br>
+    <input type="text" name="username" required><br><br>
+    <label>Password</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">Register</button>
+</form>
