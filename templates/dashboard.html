@@ -137,6 +137,35 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // create your own install button
+  const btn = document.createElement("button");
+  btn.innerText = "Install App";
+  btn.style.position = "fixed";
+  btn.style.bottom = "20px";
+  btn.style.right = "20px";
+  btn.style.padding = "10px 15px";
+  btn.style.background = "#4a90e2";
+  btn.style.color = "white";
+  btn.style.border = "none";
+  btn.style.borderRadius = "10px";
+
+  document.body.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+    });
+  });
+});
+</script>
 
 
 </body>
