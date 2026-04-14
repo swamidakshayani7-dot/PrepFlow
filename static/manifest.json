@@ -1,7 +1,7 @@
 {
   "name": "PrepFlow",
   "short_name": "Preparation",
-  "start_url": "/",
+  "start_url": "/login",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4a90e2",
