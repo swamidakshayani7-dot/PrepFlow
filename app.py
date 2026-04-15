@@ -22,7 +22,7 @@ create_table()   # ✅ MUST CALL
 
 @app.route('/')
 def home():
-    return "home working"
+    
     return redirect('/login')
 
 @app.route("/login", methods=["GET","POST"])
