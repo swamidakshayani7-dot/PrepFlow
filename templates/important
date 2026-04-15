@@ -39,3 +39,11 @@
 
     <button type="submit">Register</button>
 </form>
+
+ ------------------ testing----------
+<script>
+navigator.serviceWorker.getRegistrations().then(reg => {
+  console.log("SW:", reg);
+  alert("Service Worker Loaded: " + reg.length);
+});
+</script>

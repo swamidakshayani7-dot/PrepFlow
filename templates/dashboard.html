@@ -137,12 +137,7 @@ if ('serviceWorker' in navigator) {
 }
 </script> 
 
-<script>
-navigator.serviceWorker.getRegistrations().then(reg => {
-  console.log("SW:", reg);
-  alert("Service Worker Loaded: " + reg.length);
-});
-</script>
+
 
 <script>
 let deferredPrompt;
