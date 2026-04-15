@@ -1,10 +1,8 @@
 from flask import Flask,render_template,request,redirect,url_for
 import sqlite3
 app=Flask(__name__)
-@app.route('/')
-def home():
-    return redirect('/login')
 
+#fix route
 def create_table():
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -22,6 +20,9 @@ def create_table():
 
 create_table()   # ✅ MUST CALL
 
+@app.route('/')
+def home():
+    return redirect('/login')
 
 @app.route("/", methods=["GET","POST"])
 def login():
